@@ -10,6 +10,13 @@ public class Test5 {
         Dog myDog = context.getBean("myPet", Dog.class);
         myDog.say();
 
+        Dog yourDog = context.getBean("myPet", Dog.class);
+        yourDog.say();
+
+        // при scope=prototype программист должен самостоятельно вызывать destroy метод
+        myDog.destroy();
+        yourDog.destroy();
+
         context.close();
     }
 }
