@@ -11,10 +11,12 @@ public class ScopeTest {
 
         Cat cat = context.getBean("catBean", Cat.class);
         Person person = context.getBean("personBean", Person.class);
-        person.callYourPet();
-
-        Person person2 = context.getBean("personBean", Person.class);
-        person2.callYourPet();
+        System.out.println(person.getSurname());
+        System.out.println(person.getAge());
+//        person.callYourPet();
+//
+//        Person person2 = context.getBean("personBean", Person.class);
+//        person2.callYourPet();
 
         context.close();
     }
