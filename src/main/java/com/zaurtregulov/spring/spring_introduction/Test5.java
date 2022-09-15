@@ -14,8 +14,8 @@ public class Test5 {
         yourDog.say();
 
         // при scope=prototype программист должен самостоятельно вызывать destroy метод
-        myDog.destroy();
-        yourDog.destroy();
+//        myDog.destroy();
+//        yourDog.destroy();
 
         context.close();
     }
