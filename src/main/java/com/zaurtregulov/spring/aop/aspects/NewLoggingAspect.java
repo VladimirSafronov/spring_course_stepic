@@ -14,10 +14,14 @@ public class NewLoggingAspect {
   public Object aroundReturnBookAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
     System.out.println("aroundReturnBookAdvice: в библиотеку пытаются вернуть книгу");
 
-    long begin = System.currentTimeMillis();
-    Object resultTargetMethod = proceedingJoinPoint.proceed();
-    long finish = System.currentTimeMillis();
-    System.out.println("Время работы метода " + (finish-begin) + "мс");
+    Object resultTargetMethod = null;
+    try {
+      resultTargetMethod = proceedingJoinPoint.proceed();
+    } catch (Exception e) {
+      System.out.println("aroundReturnBookAdvice: залогировано исключение " + e);
+      throw e;
+    }
+
 
     System.out.println("aroundReturnBookAdvice: в библиотеку успешно вернули книгу");
     return resultTargetMethod;
