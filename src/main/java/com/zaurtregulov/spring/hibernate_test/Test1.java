@@ -14,7 +14,7 @@ public class Test1 {
         .addAnnotatedClass(Employee.class)
         .buildSessionFactory()) {
       Session session = factory.getCurrentSession();
-      Employee emp = new Employee("Vladimir", "Safronov", "IT", 300);
+      Employee emp = new Employee("Ilya", "Konykhov", "vk", 700);
       session.beginTransaction();
       session.save(emp);
       session.getTransaction().commit();
