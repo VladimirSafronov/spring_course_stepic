@@ -1,6 +1,8 @@
 package com.zaurtregulov.spring.hibernate_test_2;
 
-import com.zaurtregulov.spring.hibernate_test.entity.Employee;
+
+import com.zaurtregulov.spring.hibernate_test_2.entity.Detail;
+import com.zaurtregulov.spring.hibernate_test_2.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -12,14 +14,19 @@ public class Test1 {
     try (SessionFactory factory = new Configuration()
         .configure("hibernate.cfg.xml")
         .addAnnotatedClass(Employee.class)
-        .buildSessionFactory()) {
+        .addAnnotatedClass(Detail.class)
+        .buildSessionFactory();
+        Session session = factory.getCurrentSession()) {
 
-      Session session = factory.getCurrentSession(); // открытие транзакции
-      Employee emp = new Employee("Vasiliy", "Terkin", "sales", 400);
+//      Employee employee = new Employee("Oleg", "Smirnov", "sales", 700);
+//      Detail detail = new Detail("Moscow", "4321", "olegs@mail.ru");
+
       session.beginTransaction();
-      session.save(emp);
-      session.getTransaction().commit(); // закрытие транзакции
 
+      Employee emp = session.get(Employee.class, 2);
+      session.delete(emp);
+
+      session.getTransaction().commit(); // закрытие транзакции
       System.out.println("Done!");
     }
   }
