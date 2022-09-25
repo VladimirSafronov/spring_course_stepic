@@ -23,12 +23,14 @@ public class Test1 {
       session.beginTransaction();
 
       // запись значений в БД
-//      Department dep = new Department("IT", 300, 1200);
-//      Employee emp1 = new Employee("Zaur", "Tregulov", 800);
-//      Employee emp2 = new Employee("Elena", "Popova", 1000);
-//      dep.addEmployeeToDepartment(emp1);
-//      dep.addEmployeeToDepartment(emp2);
-//      session.save(dep);
+      Department dep = new Department("sales", 800, 1500);
+      Employee emp1 = new Employee("Zaur", "Tregulov", 800);
+      Employee emp2 = new Employee("Elena", "Popova", 1000);
+      Employee emp3 = new Employee("Ivan", "Sysanin", 1500);
+      dep.addEmployeeToDepartment(emp1);
+      dep.addEmployeeToDepartment(emp2);
+      dep.addEmployeeToDepartment(emp3);
+      session.save(dep);
 
       // получение значений из БД
 //      Department department = session.get(Department.class, 1);
