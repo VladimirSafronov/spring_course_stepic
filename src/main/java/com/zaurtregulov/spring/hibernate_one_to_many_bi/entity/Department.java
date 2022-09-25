@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +30,9 @@ public class Department {
   @Column(name = "min_salary")
   private int minSalary;
 
-  @OneToMany(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH},
-      mappedBy = "department")
+  @OneToMany(cascade = CascadeType.ALL,
+      mappedBy = "department",
+      fetch = FetchType.EAGER)
   private List<Employee> emps;
 
   public Department() {
